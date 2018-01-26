@@ -1,6 +1,6 @@
 # app应用内数据爬取
 
-why so serious，just enjoy it。
+why so serious，just enjoy IT。  
 
 ## 爬虫框架
 基于scrapy框架，高效爬取应用内容。
