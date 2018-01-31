@@ -1,0 +1,52 @@
+{
+	"type": "channel",
+	"channel": {
+		"id": 6348872635186676737,
+		"scid": "Dw8EKhLzbW9D2NFAEiD25l3Lt9jZVMrpuS9z5w__",
+		"title": "最有趣的恶作剧,笑喷了，打开前千万别吃东西",
+		"sub_title": "最有趣的恶作剧,笑喷了，打开前千万别吃东西",
+		"desc": "最有趣的恶作剧,笑喷了，打开前千万别吃东西",
+		"created_at": "2017-12-19 21:13",
+		"delete_status": 0,
+		"public_status": 2,
+		"upload_status": 30,
+		"pic": "http://bsyimg5.cdn.krcom.cn/stream/Dw8EKhLzbW9D2NFAEiD25l3Lt9jZVMrpuS9z5w___slp9_4.jpg",
+		"play_url": "http://gslb.miaopai.com/stream/Dw8EKhLzbW9D2NFAEiD25l3Lt9jZVMrpuS9z5w__.mp4?vend=miaopai&sign=1edf4ea9b896cddd9c9176156b395612&time_stamp=1516346365506&mpflag=16",
+		"flag": "49180",
+		"views_count": 2447,
+		"views_count_nice": "2,447",
+		"attitudes_count": 0,
+		"reposts_count": 0,
+		"comments_count": 0,
+		"upload": {
+			"start_time": "2017-12-19 21:13",
+			"finish_time": "2017-12-19 21:40",
+			"finish_time_org": 1513690839040,
+			"server": 2,
+			"orgfile_name": "",
+			"length": 684,
+			"length_nice": "11:24"
+		},
+		"user": {
+			"uid": 284309127,
+			"suid": "gQG2qwpXpRjM2Ku9zBloHg__",
+			"icon": "http://wscdn.miaopai.com/user-icon/gQG2qwpXpRjM2Ku9zBloHg___1512401235848.jpg",
+			"nick": "拽拽的黑蚂蚁",
+			"v": false,
+			"org_v": 0,
+			"login_name": "mob_14490220",
+			"create_time": "1512390859000",
+			"birthday": "1989-09-07",
+			"status": 0,
+			"talent_v": 0,
+			"talent_name": "无",
+			"talent_signed": 0,
+			"talent_signed_info": ""
+		},
+		"contentId": 6348872635186676737,
+		"relation": {
+			"mark": 0,
+			"follow": 0
+		}
+	}
+}
