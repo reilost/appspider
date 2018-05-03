@@ -23,7 +23,7 @@ def setItems(cols, datas):
     return values
 
 def main():
-    setItems()
+    pass
 
 if __name__ == "__main__":
     main()
