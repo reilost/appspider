@@ -28,7 +28,6 @@ if __name__ == "__main__" :
 """
 
 import json
-import hashlib
 import scrapy
 from appspider.commonapis import *
 

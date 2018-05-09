@@ -44,7 +44,6 @@ COOKIES_ENABLED = False
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-
 }
 
 # Enable or disable spider middlewares
