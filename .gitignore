@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 .idea/
-appspider/appspider/configs/
+appspider/configs/
 
 # C extensions
 *.so
