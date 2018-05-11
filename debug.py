@@ -9,9 +9,9 @@ from scrapy import cmdline
 
 
 def main():
-    name = 'BDWMSearchSpider'
-    cmd = 'scrapy crawl {name} -L INFO -a keyword=福记生煎'.format(name=name)
-    # cmd = 'scrapy crawl {name} -L WARNING'.format(name=name)
+    name = 'BaiduWMSpider'
+    # cmd = 'scrapy crawl {name} -L INFO -a keyword=福记生煎'.format(name=name)
+    cmd = 'scrapy crawl {name} -L WARNING'.format(name=name)
     cmdline.execute(cmd.split())
 
 

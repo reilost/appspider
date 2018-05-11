@@ -60,7 +60,7 @@ class BaiduWMSpider(scrapy.Spider):
                                  headers=self.header,
                                  method='POST',
                                  body=data,
-                                 meta={'proxy': 'http://172.16.104.31:8888'},
+                                 # meta={'proxy': 'http://172.16.104.31:8888'},
                                  callback=self.parse_list)
 
     # 解析返回值，推送至pipeline
@@ -99,7 +99,7 @@ class BaiduWMSpider(scrapy.Spider):
                                  headers=self.header,
                                  method='POST',
                                  body=data,
-                                 meta={'proxy': 'http://172.16.104.31:8888'},
+                                 # meta={'proxy': 'http://172.16.104.31:8888'},
                                  callback=self.parse_detail)
 
     def parse_detail(self, response):

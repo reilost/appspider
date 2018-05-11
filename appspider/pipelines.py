@@ -5,7 +5,6 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-import json
 import asyncpg
 import asyncio
 import copy
@@ -24,11 +23,12 @@ class PostgreSQLPipeline(object):
         """
         self.sql_create_table = ''
         self.sql_insert_item = ''
+        self.spider_name = ''
         self.conn = None
         self.buffer = {}
 
         self.items_cache = []
-        self.cache_threshold = 0
+        self.cache_threshold = 3
 
     def process_item(self, item, spider):
         """
@@ -40,27 +40,37 @@ class PostgreSQLPipeline(object):
         if self.conn is None:
             return
 
-        self.items_cache.append((json.dumps(dict(item)),))
+        self.sql_insert_item = f'''INSERT INTO {self.spider_name}({', '.join(item.keys())}) VALUES
+                                            ($1, $2, $3, $4, $5, $6, $7, $8)
+                                            ON CONFLICT DO NOTHING;
+                                            '''
+        # value = (item['date'], item['msg_type'], item['data_type'], json.dumps(dict(item)))
+        self.items_cache.append(tuple(item.values()))
 
         if len(self.items_cache) > self.cache_threshold:
             rows = copy.deepcopy(self.items_cache)
             self.items_cache.clear()
 
             # async insert.
-            asyncio.get_event_loop().run_until_complete(self.flush_rows(rows))
+            asyncio.get_event_loop().run_until_complete(
+                self.flush_rows(rows))
 
     def open_spider(self, spider):
         """
 
         :param spider:
         """
+        self.spider_name = spider.name.lower()
         # 这里的sql 语句不区分大小写，如果用大写字母命名表名会报错
-        self.sql_insert_item = f'''INSERT INTO {spider.name.lower()}(data) VALUES
-                                    ($1)
-                                    ON CONFLICT DO NOTHING;
-                                    '''
         self.sql_create_table = f'''CREATE TABLE IF NOT EXISTS {spider.name.lower()} (
                       "id" serial PRIMARY KEY NOT NULL,
+                      "rid" character(128) NOT NULL,
+                      "date" bigint NOT NULL,
+                      "msg_type" character(20) NOT NULL,
+                      "data_type" character(20) NOT NULL,
+                      "app_name" character(256) NOT NULL,
+                      "app_version" character(64) NOT NULL,
+                      "spider_author" character(64) NOT NULL,
                       "data" json NOT NULL);
                        '''
         asyncio.get_event_loop().run_until_complete(self.connect_database())
@@ -103,7 +113,7 @@ class PostgreSQLPipeline(object):
         await tr.start()
         try:
             await self.conn.executemany(self.sql_insert_item, rows)
-        except Exception:
+        except Exception as e:
             await tr.rollback()
             raise
         finally:

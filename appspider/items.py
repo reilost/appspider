@@ -11,7 +11,7 @@ import scrapy
 class AppspiderItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    id = scrapy.Field()
+    rid = scrapy.Field()
     date = scrapy.Field()
     app_name = scrapy.Field()
     app_version = scrapy.Field()

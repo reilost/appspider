@@ -1,5 +1,6 @@
 import time
 import random
+import json
 import logging
 from appspider.items import AppspiderItem
 
@@ -32,14 +33,13 @@ def setbangcleitem(msg_type, data_type, data, **kwargs):
     :return:
     """
     item = AppspiderItem()
-    _rticket = int(round(time.time() * 1000))
-    ts = int(round(_rticket / 1000))
-    item['id'] = str(ts) + '|' + kwargs['app_name'] + '|' + str(random.randint(10000, 100000))
-    item['date'] = str(_rticket)
+    _rticket = int(round(time.time()))
+    item['rid'] = str(_rticket) + '|' + kwargs['app_name'] + '|' + str(random.randint(100, 1000))
+    item['date'] = _rticket
     item['msg_type'] = msg_type
     item['data_type'] = data_type
     for key, value in kwargs.items():
         item[key] = value
-    item['data'] = data
+    item['data'] = json.dumps(data)
 
     return item
