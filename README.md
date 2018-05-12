@@ -1,19 +1,10 @@
 # app应用内数据爬取
 
-why so serious，just enjoy IT。  
-
-## 爬虫框架
-基于scrapy框架，高效爬取应用内容。
-
-### 完成列表
-
-#### 视频类
-|app|进度|爬取内容|示例数据|备注|
+## 应用列表
+|app|进度|示例数据|消息编号|
 |:-----:|:-----:|:-----:|:-----:|:-----:|
-|抖x|✔|视频，粉丝，关注，评论|[抖音测试数据](http://appspider.info:9983/douyin.php)<br>[抖音测试数据--备用](http://ddvv.life/appspider/douyin.php)|签名算法|
-|美x|✔|视频，评论||签名算法|
-|秒x|✔|视频||签名算法及通信加密算法|
-|快x|✔|视频，评论||签名算法|
+|裁判文书|✔||AppSpider-0000-000|
+|百度外卖|✔|[抖音测试数据](http://appspider.info:8002/baiduwaimai)|AppSpider-0002-001|
+|抖音短视频|✔|[抖音测试数据](http://appspider.info:8002/douyin2)|AppSpider-0003-002|
+|快手|✔|[快手测试数据](http://appspider.info:8002/kuaishou101)|AppSpider-0005-001|
 |...|...|...|...|...|
-
-注：所有的app除了视频链接以外，还有很多其它值得关注的信息，有趣。

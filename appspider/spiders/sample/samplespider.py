@@ -70,7 +70,7 @@ class SampleSpider(scrapy.Spider):
             recordlist = js['CaseTypeList']
             count = len(recordlist)
             if 0 != count:
-                item = setappspideritem('Bang-000-000', 'json', js, **CONST_INFO)
+                item = setappspideritem('Bang-0000-000', 'json', js, **CONST_INFO)
                 yield item
         except Exception as e:
             logger.error(str(e))
