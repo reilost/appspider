@@ -74,7 +74,7 @@ class ElmSpider(scrapy.Spider):
             recordlist = js['items']
             count = len(recordlist)
             if 0 != count:
-                item = setbangcleitem('AppSpider-0001-001', 'json', js, **CONST_INFO)
+                item = setappspideritem('AppSpider-0001-001', 'json', js, **CONST_INFO)
                 yield item
         except Exception as e:
             logger.error(str(e))

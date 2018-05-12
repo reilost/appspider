@@ -65,7 +65,7 @@ class BDWMSearchSpider(scrapy.Spider):
                              headers=self.header,
                              method='POST',
                              body=data,
-                             meta={'proxy': 'http://172.16.104.31:8888'},
+                             # meta={'proxy': 'http://172.16.104.31:8888'},
                              callback=self.parse_list)
 
     # 解析返回值，推送至pipeline
@@ -79,7 +79,7 @@ class BDWMSearchSpider(scrapy.Spider):
             shops_info = js['result']['list']
             count = len(shops_info)
             if 0 != count:
-                item = setbangcleitem('AppSpider-0002-001', 'json', js, **CONST_INFO)
+                item = setappspideritem('AppSpider-0002-001', 'json', js, **CONST_INFO)
                 yield item
                 yield from self.getdetail(shops_info)
         except Exception as e:
@@ -104,7 +104,7 @@ class BDWMSearchSpider(scrapy.Spider):
                                  headers=self.header,
                                  method='POST',
                                  body=data,
-                                 meta={'proxy': 'http://172.16.104.31:8888'},
+                                 # meta={'proxy': 'http://172.16.104.31:8888'},
                                  callback=self.parse_detail)
 
     def parse_detail(self, response):
@@ -113,7 +113,7 @@ class BDWMSearchSpider(scrapy.Spider):
             takeout_menu = js['result']['takeout_menu']
             count = len(takeout_menu)
             if 0 != count:
-                item = setbangcleitem('AppSpider-0002-002', 'json', js, **CONST_INFO)
+                item = setappspideritem('AppSpider-0002-002', 'json', js, **CONST_INFO)
                 yield item
         except Exception as e:
             logger.error(str(e))
