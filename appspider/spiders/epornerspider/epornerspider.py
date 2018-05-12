@@ -67,7 +67,7 @@ class EpornerSpider(scrapy.Spider):
             hrefs = tree.xpath('//div[@class="mb" or @class="mb hdy"]/a/@href')
             for href in hrefs:
                 url = 'https://www.eporner.com' + href
-                item = setbangcleitem('AppSpider-0003-001', 'json', url, **CONST_INFO)
+                item = setappspideritem('AppSpider-0004-001', 'json', url, **CONST_INFO)
                 yield item
                 yield scrapy.Request(url=url,
                                      headers=self.header,
@@ -86,7 +86,7 @@ class EpornerSpider(scrapy.Spider):
             hrefs = tree.xpath('//div[@id="hd-porn-dload"]/table/tr[last()]/td[2]/a/@href')
             for href in hrefs:
                 url = 'https://www.eporner.com' + href
-                item = setbangcleitem('AppSpider-0003-002', 'json', url, **CONST_INFO)
+                item = setappspideritem('AppSpider-0004-002', 'json', url, **CONST_INFO)
                 yield item
                 print(url)
         except Exception as e:
