@@ -48,10 +48,10 @@ class BaiduWMSpider(scrapy.Spider):
         # 获取分类
         burl = 'http://client.waimai.baidu.com/shopui/na/v1/cliententry?resid=1001&from=na-android&os=7.0&sv=3.8.1' \
                '&cuid=D95EE2BA0EEE849BB92E5447923A9027%7C066483730633368&model=HUAWEINXT-AL10&screen=1080*1812' \
-               '&channel=com.xiazaiyewaimai&loc_lat=3551984.176702&loc_lng=1.1586063471101E7&city_id=&address' \
-               '=&net_type=wifi&isp=46011&request_time={request_time} '
-        post_data = 'lat=0.0&lng=0.0&count=20&page={page}&bduss=NA&stoken=bdwm&sortby=&taste=&city_id=&promotion' \
-                    '=&return_type=launch '
+               '&channel=com.xiazaiyewaimai&loc_lat=2560675.81&loc_lng=1.268400692E7&city_id=340&address=%E8%85%BE%E8' \
+               '%AE%AF%E5%A4%A7%E5%8E%A6&net_type=wifi&isp=46011&request_time={request_time}'
+        post_data = 'lat=2560675.81&lng=1.268400692E7&count=20&page={page}&bduss=NA&stoken=bdwm&sortby=&taste=&city_id=340' \
+                    '&promotion=&return_type=refresh '
         for page in range(1, 5):
             request_time = int(round(time.time() * 1000))
             url = burl.format(request_time=request_time)
@@ -83,13 +83,10 @@ class BaiduWMSpider(scrapy.Spider):
     def getdetail(self, shops_info):
         burl = 'http://client.waimai.baidu.com/shopui/na/v1/shopmenu?resid=1001&from=na-android&os=7.0&sv=3.8.1&cuid' \
                '=D95EE2BA0EEE849BB92E5447923A9027%7C066483730633368&model=HUAWEINXT-AL10&screen=1080*1812&channel=com' \
-               '.xiazaiyewaimai&loc_lat=3551984.176702&loc_lng=1.1586063471101E7&city_id=75&address=%E5%A4%A9%E5%BA' \
-               '%9C%E8%BD%AF%E4%BB%B6%E5%9B%ADC%E5%8C%BA&net_type=wifi&isp=46011&utm_source=waimai&utm_medium' \
-               '=shoplist&utm_content=default&utm_term=default&utm_campaign=default&cid=988272&request_time={' \
-               'request_time} '
-        post_data = 'lat=3551984.176702&lng=1.1586063471101E7&shop_id={' \
-                    'shop_id}&bduss=NA&stoken=bdwm&key=O%255CFTSTDTT%255CMX%2521W3%252F%2523%2525N%255B%2521%2526O' \
-                    '%255EUPBXV%2526O%2528VS5.P%25273TTRN%2511S%255DN%255DPWEXRWEXUQDWSPD%255DQTF%255DTT '
+               '.xiazaiyewaimai&loc_lat=2560675.81&loc_lng=1.268400692E7&city_id=340&address=%E8%85%BE%E8%AE%AF%E5%A4' \
+               '%A7%E5%8E%A6&net_type=wifi&isp=46011&utm_source=waimai&utm_medium=shoplist&utm_content=default' \
+               '&utm_term=default&utm_campaign=default&cid=988272&request_time={request_time}'
+        post_data = 'lat=2560675.81&lng=1.268400692E7&shop_id={shop_id}&bduss=NA&stoken=bdwm&key=O%255CFTSTDTT%255CMX%2521W3%252F%2523%2525N%255B%2521%2526O%255EUPBXV%2526O%2528VS5.P%25273TTRN%2511S%255DN%255DPWEXRWEXUQDWSPD%255DQTF%255DTT'
         for shop_info in shops_info:
             shop_id = shop_info['shop_id']
             request_time = int(round(time.time() * 1000))
