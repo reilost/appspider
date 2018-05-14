@@ -23,10 +23,10 @@ def getbangclelogger():
 logger = getbangclelogger()
 
 
-def setbangcleitem(msg_type, data_type, data, **kwargs):
+def setappspideritem(msg_type, data_type, data, **kwargs):
     """
 
-    :param msg_type: message type, for example "Bangcle-0000-000"
+    :param msg_type: message type, for example "AppSpider-0000-000"
     :param data_type: data type, for example "json"
     :param data: response data
     :param kwargs: CONST_INFO
@@ -43,3 +43,9 @@ def setbangcleitem(msg_type, data_type, data, **kwargs):
     item['data'] = json.dumps(data)
 
     return item
+
+def dict2str(p_dict):
+    d2l = []
+    for key, value in p_dict.items():
+        d2l.append(key + '=' + str(value))
+    return '&'.join(d2l)
