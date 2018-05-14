@@ -54,6 +54,7 @@ class PostgreSQLPipeline(object):
             # async insert.
             asyncio.get_event_loop().run_until_complete(
                 self.flush_rows(rows))
+        return item
 
     def open_spider(self, spider):
         """
