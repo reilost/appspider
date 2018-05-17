@@ -10,18 +10,17 @@
 功能:
     1. 获取《裁判文书网》app数据
 消息说明:
-    1. "Bang-0001-001" : 分类结果
+    1. "AppSpider-0007-001" : 分类结果
 """
 
-import json
 import scrapy
-from BangcleSpiders.commonapis import *
-from BangcleSpiders.spiders.wenshucourt.wenshucore import *
+from appspider.commonapis import *
+from appspider.spiders.wenshucourt.wenshucore import *
 
 CONST_INFO = {
     'app_name': 'com.lawyee.wenshuapp',
     'app_version': '1.1.1115',
-    'spider_author': 'Shuang.liu'
+    'spider_author': 'ddvv'
 }
 
 
@@ -67,7 +66,7 @@ class WenshuCourtSpider(scrapy.Spider):
                                  headers=header,
                                  method='POST',
                                  body=post_param,
-                                 meta={'proxy': 'http://172.16.104.31:8888'},
+                                 # meta={'proxy': 'http://172.16.104.31:8888'},
                                  callback=self.parse)
 
     # 解析返回值，推送至pipeline
@@ -80,7 +79,7 @@ class WenshuCourtSpider(scrapy.Spider):
         try:
             js = json.loads(response.body.decode())
             token = js['token']
-            item = setbangcleitem('Bang-0001-001', 'json', js, **CONST_INFO)
+            item = setappspideritem('AppSpider-0007-001', 'json', js, **CONST_INFO)
             yield item
         except Exception as e:
             logger.error(str(e))
@@ -102,7 +101,8 @@ class WenshuCourtSpider(scrapy.Spider):
                                  headers=header,
                                  method='POST',
                                  body=post_param,
-                                 meta={'proxy': 'http://172.16.104.31:8888', 'timespan': timespan, 'token': token},
+                                 meta={'timespan': timespan, 'token': token},
+                                 # meta={'proxy': 'http://172.16.104.31:8888', 'timespan': timespan, 'token': token},
                                  callback=self.parse_list)
 
     def parse_list(self, response):
@@ -112,7 +112,7 @@ class WenshuCourtSpider(scrapy.Spider):
             token = response.meta['token']
             key = funs[StrToLong(token, 1) % 20](token + timespan)
             cleartext = decryptAES(key, chipher)
-            item = setbangcleitem('Bang-0001-002', 'json', cleartext, **CONST_INFO)
+            item = setappspideritem('AppSpider-0007-002', 'json', cleartext, **CONST_INFO)
             yield item
         except Exception as e:
             logger.error(str(e))

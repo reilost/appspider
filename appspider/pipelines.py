@@ -28,7 +28,7 @@ class PostgreSQLPipeline(object):
         self.buffer = {}
 
         self.items_cache = []
-        self.cache_threshold = 3
+        self.cache_threshold = 0
 
     def process_item(self, item, spider):
         """
